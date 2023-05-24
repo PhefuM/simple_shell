@@ -44,7 +44,7 @@ int intlen(int num);
 char *_itoa(unsigned int n);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
-char *strchr(char *s, char c);
+char *_strchr(char *s, char c);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strdup(char *str);
 
@@ -74,7 +74,7 @@ char *build(char *token, char *value);
 int check_builtin(char **cmd);
 void creat_envi(char **envi);
 int check_cmd(char **tokens, char *line, int count, char **argv);
-void treat_file(char *line, int counter, FIle *fd, char **argv);
+void treat_file(char *line, int counter, FILE *fd, char **argv);
 void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 
 /**  ####BUL FUNC #####*/
