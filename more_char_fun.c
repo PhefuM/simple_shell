@@ -1,4 +1,4 @@
-#iclude "shell.h"
+#include "shell.h"
 
 /**
  * _strcmp - Compares two strings
@@ -13,7 +13,7 @@ len1 = strlen(s1);
 len2 = strlen(s2);
 
 	if (s1 == NULL || s2 == NULL)
-		return (1);	u
+		return (1);
 	if (len1 != len2)
 		return (1);
 	for (i = 0; s1[i]; i++)

@@ -5,17 +5,17 @@
  * @src: source
  * Return: Copy of char *
  */
-char *_strcpy(char * dest, char 8src)
+char *_strcpy(char *dest, char *src)
 {
-int x;
+int i;
 
-x = 0;
-	while (src[x])
+i = 0;
+	while (src[i])
 	{
 		dest[i] = src[i];
 		i++;
 	}
-dest[x] = '\0';
+dest[i] = '\0';
 return (dest);
 }
 /**
@@ -67,7 +67,7 @@ return (s);
  *
  * Return: 1, otherwise - 0 if strings dont match
  */
-int _strcmp(const char *s1, const char *s2, size_t n)
+int _strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t i;
 

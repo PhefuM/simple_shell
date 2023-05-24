@@ -33,7 +33,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 		else if (check_builtin(cmd) == 0)
 		{
-			st = handle_builtin(cmd, st);
+			st = handle_builtin(cmd[0], st);
 			free_all(cmd, input);
 			continue;
 		}
@@ -68,7 +68,7 @@ int check_builtin(char **cmd)
 
 	while ((fun + i)->command)
 	{
-		if (_strcmp(cmd[0], (fun + i)->command == 0)
+		if (_strcmp(cmd[0], (fun + i)->command) == 0)
 			return (0);
 		i++;
 	}
