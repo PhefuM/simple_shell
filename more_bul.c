@@ -6,7 +6,7 @@
  * @s: statue of last execute
  * Return: 0 Success and -1 fail
  */
-int history_dis(__attribute__((unused))char **c, __attribute__((uunused))int s)
+int history_dis(__attribute__((unused))char **c, __attribute__((unused))int s)
 {
 	char *filename = ".simple_shell_history";
 	FILE *fp;
@@ -15,7 +15,7 @@ int history_dis(__attribute__((unused))char **c, __attribute__((uunused))int s)
 	int counter = 0;
 	char *er;
 
-	fp = fopen(filenmae, "r");
+	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
 		return (-1);
@@ -23,7 +23,7 @@ int history_dis(__attribute__((unused))char **c, __attribute__((uunused))int s)
 	while ((getline(&line, &len, fp)) != -1)
 	{
 		counter++;
-		er = itoa(counter);
+		er = _itoa(counter);
 		PRINTER(er);
 		free(er);
 		PRINTER(" ");
