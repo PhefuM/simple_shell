@@ -7,7 +7,7 @@
 * Return: exit value by status
 */
 
-int main(__attribute__((unusede)) int argc, char **argv)
+int main(__attribute__((unused)) int argc, char **argv)
 {
 	char *input, **cmd;
 	int counter = 0, statue = 1, st = 0;
@@ -87,52 +87,3 @@ void creat_envi(char **envi)
 		envi[i] = _strdup(environ[i]);
 	envi[i] = NULL;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

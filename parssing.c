@@ -28,5 +28,5 @@ char **parse_cmd(char *input)
 	}
 	tokens[i] = NULL;
 
-	return (token);
+	return (tokens);
 }

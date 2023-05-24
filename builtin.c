@@ -123,14 +123,14 @@ int display_help(char **cmd, __attribute__((unused))int er)
 * @cmd: parsed command
 * Return: always 0 or execute normal echo
 */
-in echo_bul(char **cmd, int st)
+int echo_bul(char **cmd, int st)
 {
 	char *path;
 	unsigned int pid = getppid();
 
-	if (_strcmp(cmd[1], "$?", 2) == 0)
+	if (_strncmp(cmd[1], "$?", 2) == 0)
 	{
-		print_number(pid);
+		print_number_in(st);
 		PRINTER("\n");
 	}
 	else if (_strncmp(cmd[1], "$$", 2) == 0)

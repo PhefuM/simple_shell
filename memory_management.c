@@ -9,7 +9,7 @@
 */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *results;
+	void *result;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -28,8 +28,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	else
 	{
-	_memcpy(result, ptr, old_size);
-	free(ptr);
+		_memcpy(result, ptr, old_size);
+		free(ptr);
 	}
 	return (result);
 }

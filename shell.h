@@ -31,15 +31,17 @@ extern char **environ;
 /**###### STRING FUNCTION ######*/
 
 char *_strtok(char *str, const char *tok);
-unsigned int (check_delim)(char c, const char *str);
+unsigned int check_delim(char c, const char *str);
 char *_strncpy(char *dest, char *src, int n);
 int _strlen(char *s);
 int _putchar(char c);
-int _atoi(char *char *s);
-void _put(char *str);
+int _atoi(char *s);
+void _puts(char *str);
 int _strcmp(char *s1, char *s2);
+int _isalpha(int c);
+void array_rev(char *arr, int len);
 int intlen(int num);
-char *itoa(unsigned int n);
+char *_itoa(unsigned int n);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *strchr(char *s, char c);
@@ -49,16 +51,16 @@ char *_strdup(char *str);
 /**###### MEMORY MANAGEMENT ###*/
 
 void free_env(char **env);
-void *fil_an_array(void *a, int el, unsigned int len);
+void *fill_an_array(void *a, int el, unsigned int len);
 void *_calloc(unsigned int size);
 char *_memcpy(char *dest, char *src, unsigned int n);
-void *_realloc(void *ptr, unigned int old_size, unsigned int new_size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void free_all(char **input, char *line);
 
 /**###### INPUT Function ######*/
 
 void prompt(void);
-void signal_to_handle(intsig);
+void signal_to_handel(int sig);
 char *_getline(void);
 
 /** ###### Command parser and extractor ###*/
@@ -66,12 +68,12 @@ char *_getline(void);
 int path_cmd(char **line);
 char *_getenv(char *name);
 char **parse_cmd(char *cmd);
-int handle_builtin(char *cmd);
+int handle_builtin(char *cmd, int er);
 void read_file(char *filename, char **argv);
-char *build(char *tokken, char *value);
+char *build(char *token, char *value);
 int check_builtin(char **cmd);
 void creat_envi(char **envi);
-int check_cmd(char **tokens, char *line, int count, char **argc);
+int check_cmd(char **tokens, char *line, int count, char **argv);
 void treat_file(char *line, int counter, FIle *fd, char **argv);
 void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 
@@ -88,7 +90,7 @@ void exit_bul(char **cmd, char *input,  char **argv, int c);
 int print_echo(char **cmd);
 
 /** ####error handle and printer ####*/
-void print(unsigned int n);
+void print_number(unsigned int n);
 void print_number_in(int n);
 void print_error(char *line, int c, char **argv);
 void _prerror(char **argv, int c, char **cmd);
