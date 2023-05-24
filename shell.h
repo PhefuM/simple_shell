@@ -52,13 +52,13 @@ void free_env(char **env);
 void *fil_an_array(void *a, int el, unsigned int len);
 void *_calloc(unsigned int size);
 char *_memcpy(char *dest, char *src, unsigned int n);
-void *_realloc(void *ptr, unigned int old_size, unsigned int new_size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void free_all(char **input, char *line);
 
 /**###### INPUT Function ######*/
 
 void prompt(void);
-void signal_to_handle(intsig);
+void signal_to_handle(int sig);
 char *_getline(void);
 
 /** ###### Command parser and extractor ###*/
@@ -72,7 +72,7 @@ char *build(char *tokken, char *value);
 int check_builtin(char **cmd);
 void creat_envi(char **envi);
 int check_cmd(char **tokens, char *line, int count, char **argc);
-void treat_file(char *line, int counter, FIle *fd, char **argv);
+void treat_file(char *line, int counter, FILE *fd, char **argv);
 void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 
 /**  ####BUL FUNC #####*/
