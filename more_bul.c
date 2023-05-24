@@ -1,151 +1,69 @@
 #include "shell.h"
-/**
-* exit_bul - exit statue shell
-* @cmd: parsed command
-* @input: user input
-* @argv: program name
-* @c: execute count
-* Return: void (exit statue)
-*/
-void exit_bul(char **cmd, char *input, char **argv, int c)
-{
-	int statue, i = 0;
-
-	if (cmd[1] == NULL)
-	{
-		free(input);
-		free(cmd);
-		exit(EXIT_SUCCESS);
-	}
-	while (cmd[1][i])
-	{
-		if (_isalpha(cmd[1][i++]) != 0)
-		{
-			_perror(argv, c, cmd);
-			break;
-		}
-		else
-		{
-			statue = _atoi(cmd[1]);
-			free(input);
-			free(cmd);
-			free(statue);
-		}
-	}
-}
 
 /**
-* change_dir - change direcorie
-* @cmd: parse command
-* @er: status last command executed
-* Return: 0 success 1 failed (for old pwd always 0 case no old pwd)
-*/
-int change_dir(char **cmd, __attribute__((unused))int er)
+ * history_dis - Function display history of user input simple shell
+ * @c: Parsed command
+ * @s: statue of last execute
+ * Return: 0 Success and -1 fail
+ */
+int history_dis(__attribute__((unused))char **c, __attribute__((unused))int s)
 {
-	int value = -1;
-	char cwd[PATH_MAX];
+	char *filename = ".simple_shell_history";
+	FILE *fp;
+	char *line = NULL;
+	size_t len = 0;
+	int counter = 0;
+	char *er;
 
-	if (cmd[1] == NULL)
-		value = chdir(getenv("HOME"));
-	else if (_strcmp(cmd[1], "-") == 0)
+	fp = fopen(filename, "r");
+	if (fp == NULL)
 	{
-		value = chdir(getenv("OLDPWD"));
-	}
-	else
-		value = chdir(cmd[1]);
-	
-	if (value == -1)
-	{
-		perror("hsh");
 		return (-1);
 	}
-	else if (value != -1)
+	while ((getline(&line, &len, fp)) != -1)
 	{
-		getcwd(cwd, sizeof(cwd));
-		setenv("OLDPWD", getenv("PWD"), 1);
-		setenv("PWD", cwd, 1);
+		counter++;
+		er = _itoa(counter);
+		PRINTER(er);
+		free(er);
+		PRINTER(" ");
+		PRINTER(line);
+
+
 	}
-	return (0);
-}
-
-
-/**
-* dis_env - display environment variable
-* @cmd: parsed command
-* @er: statue of last command executed
-* Return: always 0
-*/
-int dis_env(__attribute__((unused)) char **cmd, __attribute__((unused)) int er)
-{
-size_t i;
-	int len;
-
-	for (i = 0; environ[i] != NULL; i++)
-	{
-		len = _strlen(environ[i];
-		write(1, environ[i], len);
-		write(STDOUT_FILENO, "\n", 1);
-	}
+	if (line)
+		free(line);
+	fclose(fp);
 	return (0);
 }
 /**
-* display_help - displaying help for builtin
-* @cmd: parse command
-* @er: statue of last command executed
-* Return: 0 success - 1 fail
-*/
-int display_help(char **cmd, __attribute__((unused))int er)
+ * print_echo - Function executes noral echo
+ * @cmd: The pared command
+ * Return: 0 Success, otherwse -1 Fail
+ */
+int print_echo(char **cmd)
 {
-	int fd, fw, rd = 1;
-	char c;
+	pid_t pid;
+	int status;
 
-	fd = open(cmd[1], O_RDONLY);
-	if (fd < 0)
+	pid = fork();
+	if (pid == 0)
 	{
-		perror("Error");
-		return (0);
+	if (execve("/bin/echo", cmd, environ) == -2)
+	{
+		return (-1);
 	}
-	while (rd > 0)
-	{
-		rd = read(fd, &c, 1);
-		fw = write(STDOUT_FILENO, &c, rd);
-		if (fw < 0)
-		{
-			return (-1);
-		}
+		exit(EXIT_FAILURE);
 	}
-	_putchar('\n');
-	return (0);
-}
-/**
-* echo_bul - execute echo cases
-* @st: statue of last command executed
-* @cmd: parsed command
-* Return: always 0 or execute normal echo
-*/
-int echo_bul(char **cmd, int st)
-{
-	char *path;
-	unsigned int pid = getppid();
-
-	if (_strncmp(cmd[1], "$?", 2) == 0)
+	else if (pid < 0)
 	{
-		print_number_in(st);
-		PRINTER("\n");
-	}
-	else if (_strncmp(cmd[1], "$$", 2) == 0)
-	{
-		print_number(pid);
-		PRINTER("\n");
-	}
-	else if (_strncmp(cmd[1], "$PATH", 5) == 0)
-	{
-		path = _getenv("PATH");
-		PRINTER(path);
-		PRINTER("\n");
-		free(path);
+		return (-1);
 	}
 	else
-		return (print_echo(cmd));
+	{
+		do {
+			waitpid(pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
 	return (1);
 }

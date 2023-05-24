@@ -35,7 +35,7 @@ len2 = strlen(s2);
  */
 int _isalpha(int c)
 {
-if (((c >= 97) && (c <= 122)) || ((c >= 65) && ( <= 90)))
+if (((c >= 97) && (c <= 122)) || ((c >= 65) && (c <= 90)))
 {
 return (1);
 }
@@ -52,8 +52,9 @@ return (0);
 char *_itoa(unsigned int n)
 {
 	int len = 0, i = 0;
-	char *s
+	char *s;
 
+	len = intlen(n);
 	s = malloc(len + 1);
 	if (!s)
 		return (NULL);
