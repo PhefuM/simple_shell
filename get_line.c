@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
-* _getline - read the input by user from stdin
-* Return: input
+* _getline - read the input by user from Stdin
+* Return: the input
 */
-char *_getlne()
+char *_getline()
 {
 int i, buffsize = BUFSIZE, rd;
 char c = 0;

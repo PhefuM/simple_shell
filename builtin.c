@@ -21,7 +21,7 @@ void exit_bul(char **cmd, char *input, char **argv, int c)
 	{
 		if (_isalpha(cmd[1][i++]) != 0)
 		{
-			_perror(argv, c, cmd);
+			_prerror(argv, c, cmd);
 			break;
 		}
 		else
@@ -82,7 +82,7 @@ size_t i;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		len = _strlen(environ[i];
+		len = _strlen(environ[i]);
 		write(1, environ[i], len);
 		write(STDOUT_FILENO, "\n", 1);
 	}

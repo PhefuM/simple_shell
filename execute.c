@@ -9,7 +9,7 @@
 
 int handle_builtin(char **cmd, int er)
 {
-	bul_bil[] = {
+	bul_t bil[] = {
 		{"cd", change_dir},
 		{"env", dis_env},
 		{"help", display_help},
@@ -17,15 +17,15 @@ int handle_builtin(char **cmd, int er)
 		{"history", history_dis},
 		{NULL, NULL},
 	};
-	int j = 0;
+	int i = 0;
 
-	while ((bil +j )-command)
+	while ((build +i )->command)
 	{
-		if (_strcmp(cmd[0], (bil + j)->command) == 0)
+		if (_strcmp(cmd[0], (bil + i)->command) == 0)
 		{
-			return ((bil + j)->fun(cmd, er));
+			return ((bil + i)->fun(cmd, er));
 		}
-		j++;
+		i++;
 	}
 	return (-1);
 }
@@ -51,6 +51,11 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 	pid = fork();
 	if (pid == -1)
 	{
+		perror("Error");
+		return (-1);
+	}
+
+	if (pid = -1)
 		if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
 		{
 			path_cmd(cmd);
