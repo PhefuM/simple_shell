@@ -25,7 +25,7 @@ int i;
 i = 0;
 	while (i < n && *(src + i))
 	{
-	*(dest + i) = *(str + i);
+	*(dest + i) = *(src + i);
 	i++;
 	}
 	while (i < n)
