@@ -65,7 +65,7 @@ char *_getenv(char *name)
 {
 	size_t nl, vl;
 	char *value;
-	int i, y, j;
+	int i, x, j;
 
 	nl = _strlen(name);
 	for (i = 0 ; environ[i]; i++)
@@ -82,11 +82,12 @@ char *_getenv(char *name)
 			}
 
 			j = 0;
-			for (y = nl + 1; environ[i][y]; y++, j++)
+			for (x = nl + 1; environ[i][x]; x++, j++)
 			{
-				value[j] = environ[i][y];
+				value[j] = environ[i][x];
 			}
 			value[j] = '\0';
+		
 
 			return (value);
 		}

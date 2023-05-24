@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * read_file - Read command from file
- * @filename: Filename
+ * @filename: The filename
  * @argv: Program name
  * Return: -1 or otherwise 0
  */
@@ -61,7 +61,7 @@ void treat_file(char *line, int counter, FILE *fp, char **argv)
 /**
  * exit_bul_for_file - Function exits shell of case of file
  * @line: The line from a file
- * @cmd: Parsed command
+ * @cmd: The parsed command
  * @fd: The file descriptor
  *
  * Return: Case of exit in a file line
@@ -81,7 +81,7 @@ void exit_bul_for_file(char **cmd, char *line, FILE *fd)
 	{
 		if (_isalpha(cmd[1][i++]) < 0)
 		{
-			perror("illegal number");
+			perror("Illegal number");
 		}
 	}
 	statue = _atoi(cmd[1]);

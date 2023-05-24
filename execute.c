@@ -2,12 +2,12 @@
 
 /**
  * handle_builtin - Handle the builtin command
- * @cmd: Parsed command
+ * @cmd: The parsed command
  * @er: Statue of last execute
  * Return: -1 Fail, 0 upon Success
  */
 
-int handle_builtin(char **cmd, ijnt er)
+int handle_builtin(char **cmd, int er)
 {
 	bul_bil[] = {
 		{"cd", change_dir},
@@ -17,15 +17,15 @@ int handle_builtin(char **cmd, ijnt er)
 		{"history", history_dis},
 		{NULL, NULL},
 	};
-	int i = 0;
+	int j = 0;
 
-	while ((bil + i)->command)
+	while ((bil +j )-command)
 	{
-		if (_strcmp(cmd[0], (bil + i)->command) == 0)
+		if (_strcmp(cmd[0], (bil + j)->command) == 0)
 		{
-			return ((bil + i)->fun(cmd, er));
+			return ((bil + j)->fun(cmd, er));
 		}
-		i++;
+		j++;
 	}
 	return (-1);
 }
@@ -71,7 +71,7 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 }
 /**
  * signal_to_handle - Handle ^C
- * @sig: Captured signal
+ * @sig: The captured signal
  * Return: Void
  */
 void signal_to_handle(int sig)
