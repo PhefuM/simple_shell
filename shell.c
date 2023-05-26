@@ -33,7 +33,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 		else if (check_builtin(cmd) == 0)
 		{
-			st = handle_builtin(cmd[0], st);
+			st = handle_builtin(cmd[], st);
 			free_all(cmd, input);
 			continue;
 		}

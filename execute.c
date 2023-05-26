@@ -10,10 +10,11 @@
 
 int handle_builtin(char **cmd, int er)
 {
-	struct builtin {
-		const char *command;
+	typedef struct
+	{
+		char *command;
 		int (*fun)(char **cmd, int er);
-	};
+	} bul_t;
 
 	bul_t bil[] = {
 		{"cd", change_dir},
@@ -25,7 +26,7 @@ int handle_builtin(char **cmd, int er)
 	};
 	int i = 0;
 
-	while (build[i].command)
+	while ((bil + i)->command)
 	{
 		if (_strcmp(cmd[0], (bil + i)->command) == 0)
 		{

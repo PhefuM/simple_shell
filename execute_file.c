@@ -13,7 +13,7 @@ void read_file(char *filename, char **argv)
 	int counter = 0;
 	size_t len = 0;
 
-	*fp = fopen(filename, "r");
+	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -49,7 +49,7 @@ void treat_file(char *line, int counter, FILE *fp, char **argv)
 		}
 		else if (check_builtin(cmd) == 0)
 		{
-			st = handle_builtin(cmd[0], st);
+			st = handle_builtin(cmd[], st);
 			free(cmd);
 		}
 		else
