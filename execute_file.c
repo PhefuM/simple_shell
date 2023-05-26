@@ -49,7 +49,7 @@ void treat_file(char *line, int counter, FILE *fp, char **argv)
 		}
 		else if (check_builtin(cmd) == 0)
 		{
-			st = handle_builtin(cmd, st);
+			st = handle_builtin(cmd[0], st);
 			free(cmd);
 		}
 		else

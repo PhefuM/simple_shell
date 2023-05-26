@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <sys/wait.h>
 
 /**
  * handle_builtin - Handle the builtin command
@@ -9,6 +10,11 @@
 
 int handle_builtin(char **cmd, int er)
 {
+	struct builtin {
+		const char *command;
+		int (*fun)(char **cmd, int er);
+	};
+
 	bul_t bil[] = {
 		{"cd", change_dir},
 		{"env", dis_env},
@@ -19,7 +25,7 @@ int handle_builtin(char **cmd, int er)
 	};
 	int i = 0;
 
-	while ((build +i )->command)
+	while (build[i].command)
 	{
 		if (_strcmp(cmd[0], (bil + i)->command) == 0)
 		{
@@ -55,7 +61,8 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 		return (-1);
 	}
 
-	if (pid = -1)
+	if (pid == 0)
+	{
 		if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
 		{
 			path_cmd(cmd);
