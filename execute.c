@@ -5,6 +5,9 @@
  * handle_builtin - Handle the builtin command
  * @cmd: The parsed command
  * @er: Statue of last execute
+ * @change_dir: change directory
+ * @display_help: display help
+ * @echo_bul: echo builtin
  * Return: -1 Fail, 0 upon Success
  */
 
