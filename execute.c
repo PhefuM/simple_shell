@@ -78,7 +78,6 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 			print_error(cmd[0], c, argv);
 			free(input);
 			free(cmd);
-			free(cmd);
 			exit(EXIT_FAILURE);
 		}
 		return (EXIT_SUCCESS);
